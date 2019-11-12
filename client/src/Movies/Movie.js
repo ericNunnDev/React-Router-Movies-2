@@ -1,13 +1,10 @@
 import React, { useState ,useEffect } from 'react';
-import MovieCard from './MovieCard';
 import axios from 'axios';
 
 const Movie = props => {
   const [movie, setMovie] = useState();
   useEffect(() => {
-    const id = props.id.find(
-      movie => movie.id === Number(props.match.params.id)
-    );
+    const id = props.match.params.id;
     
        axios
         .get(`http://localhost:5000/api/movies/${id}`)

@@ -15,11 +15,11 @@ const App = () => {
     <div>
       <SavedList list={savedList} />
       <Route
-        path='/'
+        exact path='/'
         component={MovieList}
        />
       <Route 
-        path='/:id'
+        path='/movies/:id'
         render={props => (
         <Movie
           match={props.match}
