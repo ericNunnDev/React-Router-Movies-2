@@ -2,8 +2,8 @@ import React, { useState ,useEffect } from 'react';
 import axios from 'axios';
 
 const Movie = props => {
-  const [movie, setMovie] = useState();
-  
+  const [movie, setMovie] = useState(null);
+
   useEffect(() => {
     const id = props.match.params.id;
     
@@ -18,20 +18,20 @@ const Movie = props => {
 
   }, []);
   
-  const saveMovie = () => {
+  const saveMovie = props => {
     const addToSavedList = props.addToSavedList;
     addToSavedList(movie)
   }
 
-  if (!movie) {
-    return <div>Loading movie information...</div>;
+  if (movie === null) {
+    return <div>Loading Movies...</div>
   }
 
   const { title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
       <div className="movie-card">
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>
@@ -50,5 +50,7 @@ const Movie = props => {
     </div>
   );
 }
+
+
 
 export default Movie;
